@@ -5,7 +5,7 @@ export default function App() {
     <View className="bg-[#423f3e] w-screen h-fit flex flex-row justify-start">
       <View className="w-[50vw] h-full flex flex-col gap-2 m-0  justify-center items-start ">
         <View className="flex-1 w-full bg-[#8f6be5] flex"></View>
-        <View className="flex-1 w-full bg-[#38b6ff] "></View>
+        <View className="flex-1 w-full bg-[#38b6ff]"></View>
         <View className="bg-[#5271ff] mb-2 flex-[2] w-full"></View>
       </View>
       <View className=" bg-[#423f3e] w-1/2 h-full gap-2 m-0  flex flex-col justify-end items-start">
