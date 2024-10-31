@@ -6,6 +6,10 @@ let style = "p-2 rounded-md border-2 bg-black w-11/12 flex flex-row justify-arou
 export default function Search({onSubmit,onChange,isvalid}) {
 
 
+  //REMONEIE ESSE ARQUIVO PARA PROFILE
+
+  //FAÇA A BARRA DE PESQUISA E DE PERFIL NO MESMO COMPONENTE (COMPONENTIZANDO AMBOS)
+
   return (
     <View className="flex-[2] flex justify-center">
       <View className={style}>
