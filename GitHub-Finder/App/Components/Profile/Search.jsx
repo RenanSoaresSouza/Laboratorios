@@ -1,22 +1,22 @@
-import { Text, View, TextInput, Pressable } from "react-native";
-
+import { View, TextInput } from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
-                                              //mude de full para fit
-let style = "p-2 rounded-xl border-2 bg-black w-full flex flex-row justify-around items-center"
-export default function Search({onSubmit,onChange,isvalid}) {
 
-
-  //REMONEIE ESSE ARQUIVO PARA PROFILE
-
-  //FAÇA A BARRA DE PESQUISA E DE PERFIL NO MESMO COMPONENTE (COMPONENTIZANDO AMBOS)
-
+export default function Search({ onSubmit, onChange, isvalid }) {
   return (
-    <View >
-      <View className={style}>
+    <View>
+      <View
+        className={
+          "p-2 rounded-xl border-2 transition-all duration-1000 ease-linear bg-black flex flex-row justify-around items-center w-full"
+        }
+      >
         <TextInput
           onChangeText={(text) => onChange(text)}
-          placeholder="Pesquise Um Usuário do GitHub"
-          placeholderTextColor={isvalid == false ? "red":"gray"}
+          placeholder={
+            isvalid == false
+              ? "o Usuário não pode ser Vazio"
+              : "Pesquise Um Usuário do GitHub"
+          }
+          placeholderTextColor={isvalid == false ? "red" : "gray"}
           className="h-10 text-white flex-[0.9] rounded-sm"
         />
 
@@ -28,11 +28,6 @@ export default function Search({onSubmit,onChange,isvalid}) {
           color={isvalid == false ? "red" : "white"}
         />
       </View>
-      {(isvalid == false) && (
-        <Text className=" text-red-500 font-medium">
-          O usuário não pode ser vazio
-        </Text>
-      )}
     </View>
   );
 }
