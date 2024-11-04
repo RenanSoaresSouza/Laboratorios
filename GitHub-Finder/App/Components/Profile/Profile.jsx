@@ -14,16 +14,16 @@ export default function Profile({
   return (
     <Animated.View
       entering={FadeInUp}
-      className="flex-[2] flex justify-center items-center w-screen"
+      className="flex w-screen flex-[2] items-center justify-center"
     >
       {isdata && issearch == false && (
         <Animated.View
           entering={FadeInUp}
-          className="flex flex-col justify-center items-center"
+          className="flex flex-col items-center justify-center"
         >
           <View
             className={
-              "h-44 w-44 rounded-full bg-black flex justify-end" +
+              "flex h-44 w-44 justify-end rounded-full bg-black" +
               " items-center"
             }
           >
@@ -33,7 +33,7 @@ export default function Profile({
             />
             <View className="absolute right-0">
               <Pressable onPress={() => setIsSearch(true)}>
-                <View className="bg-black w-14 h-14 rounded-xl flex justify-center items-center">
+                <View className="flex h-14 w-14 items-center justify-center rounded-xl bg-black">
                   <FontAwesome
                     name="search"
                     className="px-4"

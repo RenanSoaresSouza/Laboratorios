@@ -7,8 +7,8 @@ import Animated, { SlideInLeft } from "react-native-reanimated";
 
 export default function ProfileInfo({ data }) {
   return (
-    <Animated.View entering={SlideInLeft} className="w-10/12 flex flex-[2.3]">
-      <View className="bg-white h-80 rounded-2xl border flex flex-col justify-center border-[#f1f1f1]">
+    <Animated.View entering={SlideInLeft} className="flex w-10/12 flex-[2.3]">
+      <View className="flex h-80 flex-col justify-center rounded-2xl border border-[#f1f1f1] bg-white">
         <BoxInfo
           data={data.bio}
           fetch={false}

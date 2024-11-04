@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import ProfileInfo from "./Components/Info/Profileinfo";
 import Reset from "./Components/Reset";
 import Profile from "./Components/Profile/Profile";
-import Animated from "react-native-reanimated";
 
 export default function App() {
   const [search, setSearch] = useState("");
@@ -13,11 +12,7 @@ export default function App() {
 
   useEffect(() => {
     if (isvalid == true) {
-      fetch(`https://api.github.com/users/${search}`, {
-        headers: {
-          Authorization: "Bearer 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",
-        },
-      })
+      fetch(`https://api.github.com/users/${search}`, {})
         .then((result) => result.json())
         .then((resp) => {
           if (verifyInvalid(resp) == true) {
@@ -57,7 +52,7 @@ export default function App() {
   }
 
   return (
-    <View className="bg-[#f7f8fc] w-screen h-screen flex flex-col items-center">
+    <View className="flex h-screen w-screen flex-col items-center bg-[#f7f8fc]">
       <Profile
         issearch={issearch}
         setIsSearch={setIsSearch}
