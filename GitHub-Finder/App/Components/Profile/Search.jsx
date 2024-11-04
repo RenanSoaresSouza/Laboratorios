@@ -6,7 +6,7 @@ export default function Search({ onSubmit, onChange, isvalid }) {
     <View>
       <View
         className={
-          "p-2 rounded-xl border-2 transition-all duration-1000 ease-linear bg-black flex flex-row justify-around items-center w-full"
+          "flex w-full flex-row items-center justify-around rounded-xl border-2 bg-black p-2 transition-all duration-1000 ease-linear"
         }
       >
         <TextInput
@@ -17,7 +17,7 @@ export default function Search({ onSubmit, onChange, isvalid }) {
               : "Pesquise Um Usuário do GitHub"
           }
           placeholderTextColor={isvalid == false ? "red" : "gray"}
-          className="h-10 text-white flex-[0.9] rounded-sm"
+          className="h-10 flex-[0.9] rounded-sm text-white"
         />
 
         <FontAwesome

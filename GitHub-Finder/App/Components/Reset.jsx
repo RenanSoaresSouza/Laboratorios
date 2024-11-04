@@ -3,13 +3,13 @@ import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 
 export default function Reset({ onClick }) {
   return (
-    <View className="border border-[#f1f1f1] bg-white w-screen flex-[0.7] rounded-tl-[40px] rounded-tr-[40px] flex justify-end items-center">
+    <View className="flex w-screen flex-[0.7] items-center justify-end rounded-tl-[40px] rounded-tr-[40px] border border-[#f1f1f1] bg-white">
       <Pressable
         onPress={onClick}
-        className="flex flex-row justify-center items-center w-10/12 border border-black rounded-[20px] m-4 h-3/5"
+        className="m-4 flex h-3/5 w-10/12 flex-row items-center justify-center rounded-[20px] border border-black"
       >
         <MaterialIcons name="logout" size={20} color="black" />
-        <Text className="text-xl h-fit m-2">Resetar</Text>
+        <Text className="m-2 h-fit text-xl">Resetar</Text>
       </Pressable>
     </View>
   );

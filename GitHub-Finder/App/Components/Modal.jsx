@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { Modal, Text, View, Pressable, ScrollView } from "react-native";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import Animated, { BounceIn, BounceOut } from "react-native-reanimated";
+import Animated, { BounceIn } from "react-native-reanimated";
+
 export default function Modalup({
   title,
   showmodal,
@@ -13,11 +14,7 @@ export default function Modalup({
   const [data, setData] = useState();
 
   async function fetchApi() {
-    const data = await fetch(dataurl, {
-      headers: {
-        Authorization: "Bearer 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",
-      },
-    })
+    const data = await fetch(dataurl)
       .then((resp) => resp.json())
       .finally(() => console.log(`${title} Concluida`));
 
@@ -35,18 +32,18 @@ export default function Modalup({
       animationType="fade"
       transparent
       visible={showmodal}
-      className="h-fit w-fit flex justify-center items-center"
+      className="flex h-fit w-fit items-center justify-center"
     >
-      <View className="h-full w-screen flex flex-col bg-[#0000006e] justify-center items-center">
+      <View className="flex h-full w-screen flex-col items-center justify-center bg-[#0000006e]">
         <Animated.View
           entering={BounceIn.delay(100).duration(400)}
-          className="bg-white h-1/2 w-11/12 rounded-xl flex items-center"
+          className="flex h-1/2 w-11/12 items-center rounded-xl bg-white"
         >
-          <View className="h-full w-full flex flex-col justify-between items-center">
-            <View className="flex-[0.3] h-fit ">
-              <Text className="font-bold text-4xl mt-4">{title}</Text>
+          <View className="flex h-full w-full flex-col items-center justify-between">
+            <View className="h-fit flex-[0.3]">
+              <Text className="mt-4 text-4xl font-bold">{title}</Text>
             </View>
-            <View className="flex-1 h-fit p-4 w-full">
+            <View className="h-fit w-full flex-1 p-4">
               <ScrollView>
                 {dataurl && isfetch == false ? (
                   <Text>{dataurl}</Text>
@@ -91,9 +88,9 @@ export default function Modalup({
             </View>
             <Pressable
               onPress={setShowModal}
-              className="flex-[0.1] mb-8 h-fit justify-center  flex-row bg-red-500 py-2 rounded-full w-[90%]"
+              className="mb-8 h-fit w-[90%] flex-[0.1] flex-row justify-center rounded-full bg-red-500 py-2"
             >
-              <Text className="text-white font-bold text-">CLOSE</Text>
+              <Text className="font-bold text-white">CLOSE</Text>
             </Pressable>
           </View>
         </Animated.View>
