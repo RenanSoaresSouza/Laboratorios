@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Modal, Text, View, Pressable, ScrollView } from "react-native";
+import { Modal, Text, View, Pressable, ScrollView, Image } from "react-native";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import Animated, { BounceIn } from "react-native-reanimated";
@@ -12,13 +12,14 @@ export default function Modalup({
   isfetch,
 }) {
   const [data, setData] = useState();
+  const [user, setUser] = useState();
 
   async function fetchApi() {
     const data = await fetch(dataurl)
       .then((resp) => resp.json())
       .finally(() => console.log(`${title} Concluida`));
 
-    setData(await data);
+    setData({ data: await data });
   }
 
   useEffect(() => {
@@ -47,13 +48,13 @@ export default function Modalup({
               <ScrollView>
                 {dataurl && isfetch == false ? (
                   <Text>{dataurl}</Text>
-                ) : data?.length == 0 || data == null ? (
+                ) : data?.data?.length == 0 || data == null ? (
                   <Text className="text-[#747474]">
                     Este Usuário Não Possui {title}
                   </Text>
                 ) : isfetch == true ? (
                   title == "Repositórios" ? (
-                    data?.map((items, index) => (
+                    data?.data?.map((items, index) => (
                       <Text className="text-[#747474]" key={index}>
                         <MaterialCommunityIcons
                           name="file-document-outline"
@@ -64,7 +65,7 @@ export default function Modalup({
                       </Text>
                     ))
                   ) : title == "Orgs" ? (
-                    data?.map((items, index) => (
+                    data?.data?.map((items, index) => (
                       <Text className="text-[#747474]" key={index}>
                         <Ionicons
                           name="headset-outline"
@@ -75,10 +76,21 @@ export default function Modalup({
                       </Text>
                     ))
                   ) : (
-                    data?.map((items, index) => (
-                      <Text className="text-[#747474]" key={index}>
-                        @{items.login}
-                      </Text>
+                    data?.data.map((items, index) => (
+                      <View
+                        key={index}
+                        className="flex flex-row items-center my-1"
+                      >
+                        <View className="h-fit w-fit items-center justify-center bg-black rounded-full">
+                          <Image
+                            className="rounded-full h-10 w-10"
+                            source={{ uri: items.avatar_url }}
+                          />
+                        </View>
+                        <Text className="text-[#747474] ml-1">
+                          @{items.login}
+                        </Text>
+                      </View>
                     ))
                   )
                 ) : (
