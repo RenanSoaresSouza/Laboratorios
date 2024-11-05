@@ -13,7 +13,7 @@ export default function ProfileInfo({ data }) {
           data={data.bio}
           fetch={false}
           title="Bio"
-          description="Bio do Usuário"
+          description="Um pouco Sobre o usuário"
         >
           <Ionicons name="person-outline" size={24} color="black" />
         </BoxInfo>
@@ -21,7 +21,7 @@ export default function ProfileInfo({ data }) {
           fetch={true}
           data={data.organizations_url}
           title="Orgs"
-          description="Organizações do usuário"
+          description="Organizações que o usuário faz parte"
         >
           <Ionicons name="headset-outline" size={24} color="black" />
         </BoxInfo>
@@ -29,7 +29,7 @@ export default function ProfileInfo({ data }) {
           fetch={true}
           data={data.repos_url}
           title="Repositórios"
-          description="Repositórios do Usuário"
+          description="Lista contendo todos os repositórios"
         >
           <MaterialCommunityIcons
             name="file-document-outline"
@@ -41,7 +41,7 @@ export default function ProfileInfo({ data }) {
           fetch={true}
           data={data.followers_url}
           title="Seguidores"
-          description="Seguidores o Usuário"
+          description="Lista de seguidores"
         >
           <FaceId />
         </BoxInfo>
