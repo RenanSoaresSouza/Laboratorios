@@ -1,7 +1,9 @@
 import { View, TextInput } from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+import React from "react";
+import PropTypes from "prop-types";
 
-export default function Search({ onSubmit, onChange, isvalid }) {
+export default function Search({ onSubmit, onChange, isValid }) {
   return (
     <View>
       <View
@@ -12,11 +14,11 @@ export default function Search({ onSubmit, onChange, isvalid }) {
         <TextInput
           onChangeText={(text) => onChange(text)}
           placeholder={
-            isvalid == false
+            isValid == false
               ? "o Usuário não pode ser Vazio"
               : "Pesquise Um Usuário do GitHub"
           }
-          placeholderTextColor={isvalid == false ? "red" : "gray"}
+          placeholderTextColor={isValid == false ? "red" : "gray"}
           className="h-10 flex-[0.9] rounded-sm text-white"
         />
 
@@ -25,9 +27,15 @@ export default function Search({ onSubmit, onChange, isvalid }) {
           name="search"
           className="px-4"
           size={30}
-          color={isvalid == false ? "red" : "white"}
+          color={isValid == false ? "red" : "white"}
         />
       </View>
     </View>
   );
 }
+
+Search.propTypes = {
+  onSubmit: PropTypes.func,
+  onChange: PropTypes.func,
+  isValid: PropTypes.bool,
+};

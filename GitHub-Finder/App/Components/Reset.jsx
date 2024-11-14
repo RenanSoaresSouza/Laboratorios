@@ -1,5 +1,7 @@
 import { Text, View, Pressable } from "react-native";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import React from "react";
+import PropTypes from "prop-types";
 
 export default function Reset({ onClick }) {
   return (
@@ -14,3 +16,7 @@ export default function Reset({ onClick }) {
     </View>
   );
 }
+
+Reset.propTypes = {
+  onClick: PropTypes.func,
+};

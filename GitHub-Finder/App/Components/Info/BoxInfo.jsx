@@ -1,20 +1,22 @@
 import { Text, View, Pressable } from "react-native";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
-import Modalup from "../Modal";
-import { useState } from "react";
+import React from "react";
+import PropTypes from "prop-types";
+import { useNavigation } from "@react-navigation/native";
 
-export default function BoxInfo({ children, title, description, data, fetch }) {
-  const [showmodal, setShowModal] = useState(false);
-
-  function handleModal() {
-    setShowModal((prevmodal) => !prevmodal);
-  }
+export default function BoxInfo({ children, title, description, data }) {
+  const navigation = useNavigation();
   return (
     //Adicione um Pressable Aqui
     //Concertar depois a borda de baixo do VIEW (Não pode ser exibida na de seguidores)
     <View className="flex-1">
       <Pressable
-        onPress={handleModal}
+        onPress={() =>
+          navigation.navigate("Info", {
+            title: title,
+            data: data,
+          })
+        }
         className={
           "flex flex-1 flex-row items-center overflow-auto border-b-[#f1f1f1] " +
           (title == "Seguidores" ? "" : "border-b")
@@ -29,17 +31,18 @@ export default function BoxInfo({ children, title, description, data, fetch }) {
             {description}
           </Text>
         </View>
-        <View className="mr-2">
+        <View>
           <MaterialIcons name="navigate-next" size={30} color="black" />
         </View>
       </Pressable>
-      <Modalup
-        showmodal={showmodal}
-        setShowModal={handleModal}
-        isfetch={fetch}
-        dataurl={data}
-        title={title}
-      />
     </View>
   );
 }
+
+BoxInfo.propTypes = {
+  children: PropTypes.element,
+  title: PropTypes.string,
+  description: PropTypes.string,
+  data: PropTypes.string,
+  fetch: PropTypes.bool,
+};
