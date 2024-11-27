@@ -19,9 +19,9 @@ export default function Infos({ navigation, route }) {
 
   return (
     <View className="h-full bg-[#f7f8fc] p-8">
-      <View className="flex flex-col justify-between h-full">
-        <Text className="text-4xl text-center font-bold">{title}</Text>
-        <View className="p-4 flex-[0.9] rounded-md border-[#dfdfdf] border px-4">
+      <View className="flex h-full flex-col justify-between">
+        <Text className="text-center text-4xl font-bold">{title}</Text>
+        <View className="flex-[0.9] rounded-md border border-[#dfdfdf] bg-white p-4 px-4">
           <ScrollView className="h-full">
             {data !== null ? (
               title == "Bio" ? (
@@ -47,12 +47,12 @@ export default function Infos({ navigation, route }) {
                     )}
                     {title == "Seguidores" && (
                       <Image
-                        className="flex justify-center items-center h-16 w-16 my-3 mr-3 bg-black rounded-full"
+                        className="my-3 mr-3 flex h-16 w-16 items-center justify-center rounded-full bg-black"
                         source={{ uri: item.avatar_url }}
                       />
                     )}
                     <Text
-                      className={title == "Seguidores" && "text-black text-md"}
+                      className={title == "Seguidores" && "text-md text-black"}
                     >
                       {item.full_name || item.login}
                     </Text>
@@ -65,10 +65,10 @@ export default function Infos({ navigation, route }) {
           </ScrollView>
         </View>
         <Pressable
-          className="bg-red-500 p-2 rounded-full"
+          className="rounded-full bg-red-500 p-2"
           onPress={() => navigation.goBack()}
         >
-          <Text className="text-center font-bold text-xl text-white">
+          <Text className="text-center text-xl font-bold text-white">
             Voltar
           </Text>
         </Pressable>
