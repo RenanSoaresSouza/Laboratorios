@@ -3,20 +3,15 @@ import { View, Text, Image, Pressable } from "react-native";
 import Animated, { FadeInUp } from "react-native-reanimated";
 import Search from "./Search";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+import PropTypes from "prop-types";
 
-export default function Profile({
-  issearch,
-  setIsSearch,
-  isdata,
-  data,
-  ...props
-}) {
+export default function Profile({ isSearch, setIsSearch, data, ...props }) {
   return (
     <Animated.View
       entering={FadeInUp}
       className="flex w-screen flex-[2] items-center justify-center"
     >
-      {isdata && issearch == false && (
+      {data && isSearch == false && (
         <Animated.View
           entering={FadeInUp}
           className="flex flex-col items-center justify-center"
@@ -52,8 +47,8 @@ export default function Profile({
           </Text>
         </Animated.View>
       )}
-      {!isdata && <Search {...props} />}
-      {issearch == true ? (
+      {!data && <Search {...props} />}
+      {isSearch == true ? (
         <Animated.View entering={FadeInUp} className="absolute w-80">
           <Search {...props} />
         </Animated.View>
@@ -61,3 +56,9 @@ export default function Profile({
     </Animated.View>
   );
 }
+
+Profile.propTypes = {
+  isSearch: PropTypes.any,
+  setIsSearch: PropTypes.func,
+  data: PropTypes.object,
+};

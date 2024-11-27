@@ -3,15 +3,18 @@ import React, { useEffect, useState } from "react";
 import ProfileInfo from "./Components/Info/Profileinfo";
 import Reset from "./Components/Reset";
 import Profile from "./Components/Profile/Profile";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { NavigationContainer } from "@react-navigation/native";
+import Infos from "./Pages/Info";
 
-export default function App() {
+function HomeScreen() {
   const [search, setSearch] = useState("");
-  const [isvalid, setIsValid] = useState();
+  const [isValid, setIsValid] = useState();
   const [data, setData] = useState();
   const [issearch, setIsSearch] = useState(false);
 
   useEffect(() => {
-    if (isvalid == true) {
+    if (isValid == true) {
       fetch(`https://api.github.com/users/${search}`, {})
         .then((result) => result.json())
         .then((resp) => {
@@ -22,12 +25,12 @@ export default function App() {
             setData(resp);
           }
         })
-        .catch((err) => alert(err))
-        .finally(() => console.log("concluido"));
+        .catch((err) => alert(err));
       setIsValid();
       setIsSearch(false);
+      console.log("teste");
     }
-  }, [isvalid]);
+  }, [isValid]);
 
   function HandleSubmit() {
     if (search?.length <= 0) {
@@ -50,21 +53,40 @@ export default function App() {
       return false;
     }
   }
-
   return (
     <View className="flex h-screen w-screen flex-col items-center bg-[#f7f8fc]">
       <Profile
-        issearch={issearch}
+        isSearch={issearch}
         setIsSearch={setIsSearch}
         data={data}
-        isdata={data !== undefined}
         onChange={setSearch}
         onSubmit={HandleSubmit}
-        valid={isvalid}
-        isvalid={isvalid}
+        valid={isValid}
+        isValid={isValid}
       />
       {data && <ProfileInfo data={data} />}
       {data && <Reset onClick={handleReset} />}
     </View>
+  );
+}
+
+const Stack = createNativeStackNavigator();
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="Home"
+          component={HomeScreen}
+        />
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="Info"
+          component={Infos}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
